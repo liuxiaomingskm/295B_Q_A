@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<p th:text = "${value1}" />
+<p th:text = "${colors}" />
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>IN STOCK</th>
+    </tr>
+    <tr th:each="color : ${colors}">
+        <td th:text="'this is ' + ${color}">Onions</td>
+    </tr>
+</table>
+
+<table class="layui-table">
+    <tr th:each="item,userStat:${map}">
+
+        <td th:text="${userStat.current.key}"></td><!-- key-->
+        <td th:text="${userStat.current.value}"></td><!-- value-->
+    </tr>
+</table>
+<!--这里user.name和user.getName()效果相同-->
+    <p th:text = "${user.name}" />
+
+<!--这里user.name和user.getName()效果相同-->
+    <p th:text = "${user.description}" />
+
+
+<!--插入代码片段三种方式-->
+<div th:insert="header :: copy"></div>
+<div th:replace="header :: copy"></div>
+<div th:include="header :: copy"></div>
+<p> [[${colors}]]</p>
+</body>
+</html>
